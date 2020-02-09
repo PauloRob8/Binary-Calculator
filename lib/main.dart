@@ -120,26 +120,56 @@ class _MyHomePageState extends State<MyHomePage> {
                     Row(
                       children: <Widget>[
                         IconButton(icon: Icon(FontAwesomeIcons.plus), onPressed: (){
-                          if(_formKey.currentState.validate())
+                          if(_formKey.currentState.validate()){
                             setState(() {
-                              _result = calculator.convert(_result).toString();
+                              _result = calculator.sum(this._num1Controller.text, this._num2Controller.text).toString();
                             });
+                            print('histoiiiiiiiiiiiiiiaressssssaaa');
+                          }
                         },
                         padding: EdgeInsets.fromLTRB(20.0, 0.0, 25.0, 0.0),),
-                        IconButton(icon: Icon(FontAwesomeIcons.minus), onPressed: null,
+                        IconButton(icon: Icon(FontAwesomeIcons.minus), onPressed: (){
+                          if(_formKey.currentState.validate()){
+                            setState(() {
+                              _result = calculator.subtract(this._num1Controller.text, this._num2Controller.text).toString();
+                            });
+                            print('histoiiiiiiiiiiiiiiaressssssaaa');
+                          }
+                        },
                         padding: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 0.0)),
-                        IconButton(icon: Icon(FontAwesomeIcons.times), onPressed: null,
+                        IconButton(icon: Icon(FontAwesomeIcons.times), onPressed: (){
+                          if(_formKey.currentState.validate()){
+                            setState(() {
+                              _result = calculator.multply(this._num1Controller.text, this._num2Controller.text).toString();
+                            });
+                            print('histoiiiiiiiiiiiiiiaressssssaaa');
+                          }
+                        },
                         padding: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 0.0)),
-                        IconButton(icon: Icon(FontAwesomeIcons.divide), onPressed: null,
+                        IconButton(icon: Icon(FontAwesomeIcons.divide), onPressed: (){
+                           if(_formKey.currentState.validate()){
+                            setState(() {
+                              _result = calculator.division(this._num1Controller.text, this._num2Controller.text).toString();
+                            });
+                            print('histoiiiiiiiiiiiiiiaressssssaaa');
+                          }
+                        },
                         padding: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 0.0)),
-                        IconButton(icon: Icon(FontAwesomeIcons.percent), onPressed: null,
+                        IconButton(icon: Icon(FontAwesomeIcons.percent), onPressed: (){
+                           if(_formKey.currentState.validate()){
+                            setState(() {
+                              _result = calculator.rest(this._num1Controller.text, this._num2Controller.text).toString();
+                            });
+                            print('histoiiiiiiiiiiiiiiaressssssaaa');
+                          }
+                        },
                         padding: EdgeInsets.fromLTRB(25.0, 0.0, 20.0, 0.0)),
                       ],
                     ),
                     SizedBox(height: 20.0,),
                     Center(
                       child: Text(
-                        _result.toString()
+                        _result
                       ),
                     )
                   ],
