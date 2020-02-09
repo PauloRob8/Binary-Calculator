@@ -36,7 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final _formKey = GlobalKey<FormState>();
   final _num1Controller = TextEditingController();
   final _num2Controller = TextEditingController();
-  String _result = '10000001';
+  String _result = '';
+  String _binary_result = '';
   Calculator calculator = Calculator();
   
   @override
@@ -123,8 +124,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           if(_formKey.currentState.validate()){
                             setState(() {
                               _result = calculator.sum(this._num1Controller.text, this._num2Controller.text).toString();
+                              _binary_result = calculator.deconvert(int.parse(_result));
                             });
-                            print('histoiiiiiiiiiiiiiiaressssssaaa');
                           }
                         },
                         padding: EdgeInsets.fromLTRB(20.0, 0.0, 25.0, 0.0),),
@@ -132,8 +133,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           if(_formKey.currentState.validate()){
                             setState(() {
                               _result = calculator.subtract(this._num1Controller.text, this._num2Controller.text).toString();
+                              _binary_result = calculator.deconvert(int.parse(_result));
                             });
-                            print('histoiiiiiiiiiiiiiiaressssssaaa');
                           }
                         },
                         padding: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 0.0)),
@@ -141,37 +142,41 @@ class _MyHomePageState extends State<MyHomePage> {
                           if(_formKey.currentState.validate()){
                             setState(() {
                               _result = calculator.multply(this._num1Controller.text, this._num2Controller.text).toString();
+                              _binary_result = calculator.deconvert(int.parse(_result));
                             });
-                            print('histoiiiiiiiiiiiiiiaressssssaaa');
                           }
                         },
                         padding: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 0.0)),
                         IconButton(icon: Icon(FontAwesomeIcons.divide), onPressed: (){
                            if(_formKey.currentState.validate()){
                             setState(() {
-                              _result = calculator.division(this._num1Controller.text, this._num2Controller.text).toString();
+                              _result = calculator.divide(this._num1Controller.text, this._num2Controller.text).toString();
+                              _binary_result = calculator.deconvert(int.parse(_result));
                             });
-                            print('histoiiiiiiiiiiiiiiaressssssaaa');
                           }
                         },
                         padding: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 0.0)),
                         IconButton(icon: Icon(FontAwesomeIcons.percent), onPressed: (){
                            if(_formKey.currentState.validate()){
                             setState(() {
-                              _result = calculator.rest(this._num1Controller.text, this._num2Controller.text).toString();
+                              _result = calculator.remainder(this._num1Controller.text, this._num2Controller.text).toString();
+                              _binary_result = calculator.deconvert(int.parse(_result));
                             });
-                            print('histoiiiiiiiiiiiiiiaressssssaaa');
                           }
                         },
                         padding: EdgeInsets.fromLTRB(25.0, 0.0, 20.0, 0.0)),
                       ],
                     ),
                     SizedBox(height: 20.0,),
-                    Center(
-                      child: Text(
-                        _result
-                      ),
-                    )
+                    ListTile(
+                      leading: Text('Resultado Binário: '),
+                      trailing: Text(_binary_result),
+                    ),
+                    SizedBox(height: 10.0,),
+                    ListTile(
+                      leading: Text('Resultado Decimal: '),
+                      trailing: Text(_result),
+                    ),
                   ],
                 ),
               ),

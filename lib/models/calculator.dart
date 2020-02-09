@@ -15,6 +15,44 @@ class Calculator{
     return result;
   }
 
+  String deconvert(int number){
+    String binaryResult = '';
+    var values = List(8);
+    var values1 = List(16);
+
+    if(number >= 256){
+      for(int i = 0; number > 0; i++){
+        values1[i] = number % 2;
+        number = number ~/ 2;
+        }    
+    
+      binaryResult = values1.reversed.join();
+      return binaryResult.replaceAll(RegExp(r'null'), '0');
+    }
+
+    else{
+      if(number < 0){
+        number = number * (-1);
+        for(int i = 0; number > 0; i++){
+          values[i] = number % 2;
+          number = number ~/ 2;
+        }
+
+      binaryResult = values.reversed.join();
+      return '1 '+ binaryResult.replaceAll(RegExp(r'null'), '0');
+
+      }
+      for(int i = 0; number > 0; i++){
+        values[i] = number % 2;
+        number = number ~/ 2;
+      }    
+    
+      binaryResult = values.reversed.join();
+      return binaryResult.replaceAll(RegExp(r'null'), '0');
+    }
+    
+  }
+
   int sum (String num1, String num2){
     int result = 0;
     result = convert(num1) + convert(num2);
@@ -31,13 +69,13 @@ class Calculator{
     return result;
   }
 
-  int division(String num1, String num2){
+  int divide(String num1, String num2){
     int result = 0;
-    result = (convert(num1) / convert(num2)) as int;
+    result = convert(num1) ~/ convert(num2);
     return result;
   }
 
-  int rest(String num1, String num2){
+  int remainder(String num1, String num2){
     int result = 0;
     result = convert(num1) % convert(num2);
     return result;
