@@ -1,3 +1,4 @@
+import 'package:binary_operations/models/calculator.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,7 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final _formKey = GlobalKey<FormState>();
   final _num1Controller = TextEditingController();
   final _num2Controller = TextEditingController();
-  int _result = 00000000;
+  String _result = '10000001';
+  Calculator calculator = Calculator();
   
   @override
   Widget build(BuildContext context) {
@@ -78,8 +80,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         )
                       ),
                       validator: (value){
-                        if(value.contains(RegExp(r'^[0-1]+$')))
+                        if(value.contains(RegExp(r'^[0-1]+$'))){
+                          if(value.length < 8){
+                            return 'Complete os 8bits';
+                          }
                           return null;
+                        }
                         else
                           return 'Número inválido';
                       },
@@ -100,8 +106,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         )
                       ),
                       validator: (value){
-                        if(value.contains(RegExp(r'^[0-1]+$')))
+                        if(value.contains(RegExp(r'^[0-1]+$'))){
+                          if(value.length < 8){
+                            return 'Complete os 8bits';
+                          }
                           return null;
+                        }
                         else
                           return 'Número inválido';
                       },
@@ -112,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         IconButton(icon: Icon(FontAwesomeIcons.plus), onPressed: (){
                           if(_formKey.currentState.validate())
                             setState(() {
-                              _result = 1234;
+                              _result = calculator.convert(_result).toString();
                             });
                         },
                         padding: EdgeInsets.fromLTRB(20.0, 0.0, 25.0, 0.0),),
