@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Binary Calculator',
       theme: ThemeData(
         primarySwatch: Colors.green,
-        textTheme: GoogleFonts.robotoMonoTextTheme(Theme.of(context).textTheme,),
+        fontFamily: 'RobotoMono',
       ),
       home: MyHomePage(title: 'Binary Calculator'),
       debugShowCheckedModeBanner: false,
