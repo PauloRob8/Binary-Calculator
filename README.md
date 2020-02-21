@@ -15,5 +15,9 @@ Baixe o arquivo ``binary-calculator.apk`` e instale em um smartphone android.
 
 Densenvolvida em flutter versão 1.12.13
 
+### Versão Web
+
+Versão web publicada com o [Surge](https://surge.sh/) encontra-se no link: [Binary Calculator](http://ready-cream.surge.sh/#/])
+
 ### Installed plugins
 font_awesome_icons version 8.3.0
