@@ -1,16 +1,23 @@
-# binary_operations
+# Binary Calculator
 
-A new Flutter project.
+Calculadora de valores binários entre 0 a 255 (00000000 a 11111111).
 
-## Getting Started
+![image](https://user-images.githubusercontent.com/33494009/74116542-bd369200-4b92-11ea-901f-7c5d744008ec.png)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Installing
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Baixe o arquivo ``binary-calculator.apk`` e instale em um smartphone android.
+
+
+### Application
+
+Densenvolvida em flutter versão 1.12.13
+
+### Versão Web
+
+Versão web publicada com o [Surge](https://surge.sh/) encontra-se no link: [Binary Calculator](http://ready-cream.surge.sh/#/])
+
+### Installed plugins
+font_awesome_icons version 8.3.0
