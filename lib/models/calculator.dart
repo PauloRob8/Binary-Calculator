@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
+
 class Calculator{
   int number1;
   int number2;

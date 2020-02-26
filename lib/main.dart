@@ -1,7 +1,10 @@
 import 'package:binary_operations/models/calculator.dart';
+import 'package:binary_operations/stores/calculator.store.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobx/mobx.dart';
 
 
 void main() => runApp(MyApp());
@@ -36,9 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final _formKey = GlobalKey<FormState>();
   final _num1Controller = TextEditingController();
   final _num2Controller = TextEditingController();
-  String _result = '';
-  String _binaryResult = '';
   Calculator calculator = Calculator();
+  CalculatorStore calculatorStore = CalculatorStore();
   
   @override
   Widget build(BuildContext context) {
@@ -125,46 +127,31 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                       IconButton(icon: Icon(FontAwesomeIcons.plus), onPressed: (){
                         if(_formKey.currentState.validate()){
-                          setState(() {
-                            _result = calculator.sum(this._num1Controller.text, this._num2Controller.text).toString();
-                            _binaryResult = calculator.deconvert(int.parse(_result));
-                          });
+                          calculatorStore.sum(this._num1Controller.text,this._num2Controller.text,this.calculator);
                         }
                       },
                       padding: EdgeInsets.fromLTRB(20.0, 0.0, 25.0, 0.0),),
                       IconButton(icon: Icon(FontAwesomeIcons.minus), onPressed: (){
                         if(_formKey.currentState.validate()){
-                          setState(() {
-                            _result = calculator.subtract(this._num1Controller.text, this._num2Controller.text).toString();
-                            _binaryResult = calculator.deconvert(int.parse(_result));
-                          });
+                          calculatorStore.subtract(_num1Controller.text, _num2Controller.text, this.calculator);
                         }
                       },
                       padding: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 0.0)),
                       IconButton(icon: Icon(FontAwesomeIcons.times), onPressed: (){
                         if(_formKey.currentState.validate()){
-                          setState(() {
-                            _result = calculator.multply(this._num1Controller.text, this._num2Controller.text).toString();
-                            _binaryResult = calculator.deconvert(int.parse(_result));
-                          });
+                          calculatorStore.multply(_num1Controller.text, _num2Controller.text, this.calculator);
                         }
                       },
                       padding: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 0.0)),
                       IconButton(icon: Icon(FontAwesomeIcons.divide), onPressed: (){
                           if(_formKey.currentState.validate()){
-                          setState(() {
-                            _result = calculator.divide(this._num1Controller.text, this._num2Controller.text).toString();
-                            _binaryResult = calculator.deconvert(int.parse(_result));
-                          });
+                            calculatorStore.divide(_num1Controller.text, _num2Controller.text, this.calculator);
                         }
                       },
                       padding: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 0.0)),
                       IconButton(icon: Icon(FontAwesomeIcons.percent), onPressed: (){
                           if(_formKey.currentState.validate()){
-                          setState(() {
-                            _result = calculator.remainder(this._num1Controller.text, this._num2Controller.text).toString();
-                            _binaryResult = calculator.deconvert(int.parse(_result));
-                          });
+                            calculatorStore.remainder(_num1Controller.text, _num2Controller.text, this.calculator);
                         }
                       },
                       padding: EdgeInsets.fromLTRB(25.0, 0.0, 20.0, 0.0)),
@@ -176,14 +163,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     leading: Text('Resultado Binário: ',style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),),
-                    trailing: Text(_binaryResult),
+                    trailing: Observer(builder: (_)=> Text('${calculatorStore.binaryResult}')),
                   ),
                   SizedBox(height: 10.0,),
                   ListTile(
                     leading: Text('Resultado Decimal: ',style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),),
-                    trailing: Text(_result),
+                    trailing: Observer(builder: (_)=> Text('${calculatorStore.number}')),
                   ),
                 ],
               ),
