@@ -6,7 +6,6 @@ class Calculator{
   int number1;
   int number2;
 
-
   int convert (String number){
     
     int result = 0;
