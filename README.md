@@ -20,4 +20,6 @@ Densenvolvida em flutter versão 1.12.13
 Versão web publicada com o [Surge](https://surge.sh/) encontra-se no link: [Binary Calculator](http://ready-cream.surge.sh/#/])
 
 ### Installed plugins
-font_awesome_icons version 8.3.0
+font_awesome_icons version
+flutter_mobx
+mobx
